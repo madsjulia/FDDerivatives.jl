@@ -26,7 +26,7 @@ function makegradient(f, h=sqrt(eps(Float64)))
 			xphs[i][i] += h
 		end
 		xphs[end] = copy(x)
-		ys = map(f, xphs)
+		ys = pmap(f, xphs)
 		grad = Array(eltype(ys), length(x))
 		for i = 1:length(x)
 			grad[i] = ys[i] - ys[end]
