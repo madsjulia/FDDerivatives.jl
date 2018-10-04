@@ -1,5 +1,6 @@
 import FDDerivatives
-using Base.Test
+import Random
+using Test
 
 function basictest()
 	function f(x::Array{Float64, 1})
@@ -17,5 +18,5 @@ function basictest()
 	end
 end
 
-srand(0)
+Random.seed!(0)
 basictest()
