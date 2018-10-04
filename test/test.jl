@@ -10,10 +10,10 @@ function basictest()
 	end
 	testjacobianf = FDDerivatives.makejacobian(f)
 	x = [1., 2.]
-	@test_approx_eq_eps jacobianf(x) testjacobianf(x) 1e-4
+	@test jacobianf(x) ≈ testjacobianf(x) atol=1e-4
 	for i = 1:10000
 		x = 10 * randn(2)
-		@test_approx_eq_eps jacobianf(x) testjacobianf(x) 1e-4
+		@test jacobianf(x) ≈ testjacobianf(x) atol=1e-4
 	end
 end
 
