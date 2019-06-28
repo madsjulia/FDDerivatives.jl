@@ -1,6 +1,6 @@
 import FDDerivatives
 import Random
-using Test
+import Test
 
 function basictest()
 	function f(x::Array{Float64, 1})
@@ -11,10 +11,10 @@ function basictest()
 	end
 	testjacobianf = FDDerivatives.makejacobian(f)
 	x = [1., 2.]
-	@test jacobianf(x) ≈ testjacobianf(x) atol=1e-4
+	@Test.test jacobianf(x) ≈ testjacobianf(x) atol=1e-4
 	for i = 1:10000
 		x = 10 * randn(2)
-		@test jacobianf(x) ≈ testjacobianf(x) atol=1e-4
+		@Test.test jacobianf(x) ≈ testjacobianf(x) atol=1e-4
 	end
 end
 
